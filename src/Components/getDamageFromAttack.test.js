@@ -16,10 +16,10 @@ describe('getDamageFromAttacks', () => {
               }
             const output = {
                 hp: 100,
-                atk: '100%',
-                weak: '100%',
+                atk: '100',
+                weak: '100',
                 damage: 60,
-                level: -14.8
+                level: 3.2
               }
             expect(getDamageFromAttack(input)).toEqual(output)
         })

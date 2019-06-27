@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Block from "./Components/Block.js"
 import getDamageFromAttack from "./Components/getDamageFromAttack"
 import './Components/App.css'
+import AddBar from "./AddBar.js"
 
 const COLORS = {
   Psychic: "#f8a5c2",
@@ -21,13 +22,13 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      currentView: true,
+      currentView: false,
       pokemon: {},
       myCards: [],
       searchCards: [],
-      myPoke: false
+      myPoke: true
     }
-    this.removeAll = this.removeAll.bind(this)
+    this.toggleModal = this.toggleModal.bind(this)
     this.test = this.test.bind(this) 
   }
 
@@ -36,17 +37,18 @@ class App extends Component {
       .then(response => response.json())
       .then(answer => {
         this.setState({
-          pokemon: answer.cards
+          pokemon: answer.cards,
+          searchCards: answer.cards
         })
       })
   }
 
-  removeAll = () => {
-    this.setState({
-      ...this.state,
-      currentView: false,
-      myPoke: true
-    })
+  toggleModal = () => {
+    this.setState(prevState => {
+      return ({
+        currentView: !prevState.currentView
+      })
+    });
   }
 
   test = (eachCard) => ({ target }) => {
@@ -73,7 +75,6 @@ class App extends Component {
       this.setState({
       ...this.state,
       currentView: true,
-      myPoke: false
     })
   }
 
@@ -98,23 +99,16 @@ class App extends Component {
     const that = this
     return (
       <div className="App" onScroll={this.scrollList}>
-        {this.state.currentView === true && 
         <div>
-          <header className="Header" onClick={this.removeAll}>All pokemon</header>
-          <p className="small">Click to change view</p>
-          <input className="SearchBar" type="text" placeholder="Search.." onChange={this.changeView}></input>  
-        </div>}
-        {this.state.currentView === false && 
-        <header onClick={this.addAll}>Pokedex</header>
-        }
-        <div >
-        {this.state.myPoke === true && 
-          <div>
+          <header>Pokedex</header>
+        </div>
+          <div className="Contents">
           {this.state.myCards.map(function(eachCard) {
             const result = getDamageFromAttack(eachCard)
-            return (<div  className="Separate">
+            return (
                 <Block
-                  Current = {that.state.myPoke}
+                  type = "myPoke"
+                  Current = {that.state.currentView}
                   id = {eachCard.id}
                   onClick={that.testOther(eachCard)}
                   value= 'value'
@@ -125,19 +119,23 @@ class App extends Component {
                   imageUrl = {eachCard.imageUrl}
                   happiness = {result.level}
                 />
-            </div>)
-          })}
-        </div>
+            )
+          })
         }
         </div>
         <div >
-        {this.state.currentView === true && 
-          <div >
-          {this.state.searchCards.map(function(eachCard) {
+        {this.state.currentView === true &&  
+        <div >
+          <div className="Backdrop" onClick={this.toggleModal} />
+          <div className="Modal">
+          <input className="SearchBar" type="text" placeholder="Find Pokemon " onChange={this.changeView}></input>  
+          <div className="Contents">
+          {
+            this.state.searchCards.map(function(eachCard) {
             const result = getDamageFromAttack(eachCard)
-            return (<div className="Separate">
+            return (
                 <Block
-                  Current = {that.state.myPoke}
+                  Current = {that.state.currentView}
                   id = {eachCard.id}
                   value= 'value'
                   onClick={that.test(eachCard)}
@@ -148,10 +146,15 @@ class App extends Component {
                   imageUrl = {eachCard.imageUrl}
                   happiness = {result.level}
                 />
-            </div>)
+            )
           })}
+          </div>
+          </div>
         </div>
         }
+        </div>
+        <div className="Footer">
+            <div className="Circle"  onClick={this.toggleModal}>+</div>
         </div>
       </div>
       )

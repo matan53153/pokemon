@@ -13,7 +13,7 @@ export default function (input) {
         atk: input.attacks === undefined ? 0 : input.attacks.length * 50,
         damage: damage,
         weak: weak,
-        level: (((hp / 10) + (damage /10 ) + 10 - (weak)) / 5) === undefined ? 0 : (((hp / 10) + (damage /10 ) + 10 - (weak)) / 5)
+        level: (((hp / 10) + (damage /10 ) + 10 - (weak/10)) / 5) === undefined ? 0 : (((hp / 10) + (damage /10 ) + 10 - (weak/10)) / 5)
 
     }
 }
