@@ -1,0 +1,27 @@
+{
+  "name": "appman-exam-2018",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "react-scripts": "1.1.4"
+  },
+  "dependencies": {
+    "@progress/kendo-react-grid": "^3.2.2",
+    "cors": "^2.8.4",
+    "jest": "^24.8.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-scroll": "^1.7.12",
+    "react-virtual-scrolling": "^1.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "jest",
+    "api": "node ./src/server.js",
+    "eject": "react-scripts eject"
+  },
+  "main": "index.js",
+  "author": "matan53153 <matan53153@gmail.com>",
+  "license": "MIT"
+}

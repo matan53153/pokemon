@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css?family=Atma:700|Gaegu&display=swap');
+
+.App {
+    overflow-y: scroll;
+    height: 750px;
+}
+
+.App header {
+    font-size: 70px;
+    text-align: center;
+}
+
+.Separate {
+    width: 94%;
+    margin: 10px;
+    background: #f3f4f7;
+    font-family: 'Atma', cursive;
+    border-radius: 10px;
+    padding: 20px;
+    float: left;
+    box-shadow: 6px 6px 4px -4px rgba(0,0,0,0.75);
+    position: relative;
+}
+
+.Separate:active {
+    height: -10px;
+    box-shadow: 0 0 0 0;
+}
+
+.SearchBar {
+    border-radius: 5%;
+    font-family: 'Atma', cursive;
+    font-size: 50px;
+    width: 700px;
+    height: 50px;
+    margin: 0 15%;
+}
+
+.ImageDisplay {
+    width: 300px;
+    float: left;
+    padding-right: 20px;
+}
+
+.TextOnCard {
+    font-size: 30px;
+    text-align: left;
+}
+
+.DisplayTrueName {
+    font-size:50px;
+    font-family: 'Gaegu', cursive;
+
+}
+
+.DisplayName {
+    font-size: 30px;
+    padding-right: 20px;
+    padding-bottom: 30px;
+}
+
+.BlockL {
+    width: 100px;
+    display: flex;
+}
+
+.Container {
+    height: 80px;
+    background-color: #f3701a; 
+    border-radius: 100px;
+    margin-top: 20px;
+}
+
+.Outside {
+    background-color: #e4e4e4; 
+    width: 500px;
+    height: 80px;
+    border-radius: 100px;
+}
+
+.skills {
+    padding-top: 10px; /* Add top padding */
+    padding-bottom: 10px; /* Add bottom padding */
+    color: Black; /* White text color */
+  }
+
+.button {
+    font-size: 30px;
+    cursor: pointer;
+    color: brown;
+    float: right;
+    display: none;
+    padding-right: 20px;
+}
+
+.HoverForAdding:hover .button {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+}
+
+.small {
+    margin-top: -25px;
+    text-align: center;
+
+}
+
+.Header {
+    cursor: pointer;
+}
